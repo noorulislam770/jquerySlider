@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide Show using jquery</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <style>
+        button{
+            display: inline;
+            padding: 1em ;
+            border: none;
+            background-color: gold;
+            width: 200px;
+            box-shadow: 2px 2px  10px 10px black;
+        }
+        p{
+            display: inline;
+            position: absolute;
+            left: 48%;
+            top: 10px;
+        }
+        img{
+            margin-top: 50px;
+        }
+        #prev{
+            
+            margin-left: 10%;
+            position: relative;
+            margin-top :-30%;
+            
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <button id="prev">Previous</button>
+        <p id="current">Current : </p>
+        <img src="2.jpg" width="60%" alt="Slider Image" id="slider">
+        <button id="next">Next</button>
+    </div>
+
+
+    <script>
+        $(document).ready(function () {
+            images = ['1.jpg','2.jpg','3.jpg']
+            function getCurrent(){
+                name = $('#slider').attr('src');
+                te = "current : " + name
+                $('#current').text(te)
+            }
+            getCurrent();
+            $('#prev').click(function () {
+                if(name == images[2]){
+                    $('#slider').attr('src','2.jpg')      
+                }
+                else if(name == images[1]){
+                    $('#slider').attr('src','1.jpg')      
+                }
+                else if(name == images[0]){
+                    $('#slider').attr('src','3.jpg')      
+                }
+                getCurrent();
+            })
+            
+            $('#next').click(function () {
+                if(name == images[2]){
+                    $('#slider').attr('src','1.jpg')      
+                }
+                else if(name == images[1]){
+                    $('#slider').attr('src','3.jpg')      
+                }
+                else if(name == images[0]){
+                    $('#slider').attr('src','2.jpg')      
+                }      
+                getCurrent();
+            })
+        })
+    </script>
+</body>
+</html>
